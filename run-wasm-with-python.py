@@ -48,16 +48,16 @@ with open(path, 'rb') as bytecode:
     print('py add', t_py)
 
     t_wasm = timeit.timeit('(simple_add(n-1, n) for n in range(100, 1000))', number=10000)
-    print(t_wasm)
+    print('t_wasm add', t_wasm)
 
     t_py = timeit.timeit('(fibonacci(n) for n in range(100, 1000))', number=10000)
     print('py fibo', t_py)
 
     t_wasm = timeit.timeit('(fibo(n) for n in range(100, 1000))', number=10000)
-    print(t_wasm)
+    print('t_wasm fibo', t_wasm)
 
     t_py = timeit.timeit('(string_loop(n) for n in range(100, 1000))', number=10000)
     print('py str loop', t_py)
 
     t_wasm = timeit.timeit('(loop_str(n) for n in range(100, 1000))', number=10000)
-    print(t_wasm)
+    print('t_wasm str loop', t_wasm)
