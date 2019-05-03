@@ -8,4 +8,4 @@ edition = "2018"
 crate-type = ["cdylib"]
 
 [dependencies]
-georust = "*"
+geo = "0.12.1"

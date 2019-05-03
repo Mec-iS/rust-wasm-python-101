@@ -50,6 +50,7 @@ with open(path, 'rb') as bytecode:
     simple_add = instance.exports.simple_add
     fibo = instance.exports.fibo
     loop_str = instance.exports.loop_str
+    rust_geo_convex_hull = instance.exports.rust_geo_convex_hull
 
     # try a simple addition
     result = simple_add(12, 12)
@@ -74,3 +75,9 @@ with open(path, 'rb') as bytecode:
 
     t_wasm = timeit.timeit('(loop_str(n) for n in range(100, 1000))', number=10000)
     print('t_wasm str loop', t_wasm)
+
+    t_py = timeit.timeit('(shapely_convex_hull() for n in range(100, 1000))', number=10000)
+    print('py shapely convex hull', t_py)
+
+    t_wasm = timeit.timeit('(rust_geo_convex_hull() for n in range(100, 1000))', number=10000)
+    print('t_wasm rust-geo convex hull', t_wasm)
