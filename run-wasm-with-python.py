@@ -25,6 +25,19 @@ def string_loop(string):
     for s in string:
         s = s * 10
 
+def shapely_convex_hull():
+    shp = [
+       (0.0, 0.0),
+       (4.0, 0.0),
+       (4.0, 1.0),
+       (1.0, 1.0),
+       (1.0, 4.0),
+       (0.0, 4.0),
+       (0.0, 0.0),
+    ]
+
+    MultiPoint(shp).convex_hull
+
 with open(path, 'rb') as bytecode:
     wasm_bytes = bytecode.read()
     instance = Instance(wasm_bytes)
