@@ -4,4 +4,4 @@ venv/
 *.pyc
 __pycache__/
 python-ext-wasm/
-data/*.csv
+timing/data/*.csv

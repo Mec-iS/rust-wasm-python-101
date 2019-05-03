@@ -31,7 +31,7 @@ def run_timing():
         results = OrderedDict()
         results['timestap'] = str(datetime.now())
         results['python_wasmer_v'] = wasmer.__version__
-        results['rustc_v'] = open(join(dirname(__file__), 'CONFIG'), 'r').read()
+        results['rustc_v'] = open(join(dirname(__file__), 'CONFIG'), 'r').read().replace('\n', '')
         results['data'] = {}
 
         # CSV file
