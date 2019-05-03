@@ -44,7 +44,14 @@ use geo::convexhull::ConvexHull;
 #[no_mangle]
 pub extern fn rust_geo_convex_hull() -> () {
     // An L shape
-    let coords = vec![(0.0, 0.0), (4.0, 0.0), (4.0, 1.0), (1.0, 1.0), (1.0, 4.0), (0.0, 4.0), (0.0, 0.0)];
+    let coords = vec![
+        (0.0, 0.0),
+        (4.0, 0.0),
+        (4.0, 1.0),
+        (1.0, 1.0),
+        (1.0, 4.0),
+        (0.0, 4.0),
+        (0.0, 0.0)];
     // conversions to geo types are provided from several kinds of coordinate sequences
     let poly = Polygon::new(coords.into(), vec![]);
 
