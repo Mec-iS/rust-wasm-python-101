@@ -1,43 +1,10 @@
 import timeit
 
 from wasmer import Instance
-from shapely.geometry import MultiPoint
+
+from timing.src_py import *
 
 path = 'target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm'
-
-def add(a, b):
-    return a + b
-
-def fibonacci(n):
-    i = 0
-    nextterm = 1
-    present = 1
-    previous = 0
-
-    while i < n:
-        nextterm = present + previous
-        present = previous
-        previous = nextterm
-        i = i + 1
-
-    return nextterm
-
-def string_loop(string):
-    for s in string:
-        s = s * 10
-
-def shapely_convex_hull():
-    shp = [
-       (0.0, 0.0),
-       (4.0, 0.0),
-       (4.0, 1.0),
-       (1.0, 1.0),
-       (1.0, 4.0),
-       (0.0, 4.0),
-       (0.0, 0.0),
-    ]
-
-    MultiPoint(shp).convex_hull
 
 def run_test():
     with open(path, 'rb') as bytecode:
@@ -60,25 +27,25 @@ def run_test():
         print(result)
 
         # some timing using popular functions
-        t_py = timeit.timeit('(add(n-1, n) for n in range(100, 1000))', number=10000)
+        t_py = timeit.timeit('(py_simple_add(n-1, n) for n in range(100, 1000))', number=10000)
         print('py add', t_py)
 
         t_wasm = timeit.timeit('(simple_add(n-1, n) for n in range(100, 1000))', number=10000)
         print('t_wasm add', t_wasm)
 
-        t_py = timeit.timeit('(fibonacci(n) for n in range(100, 1000))', number=10000)
+        t_py = timeit.timeit('(py_fibonacci(n) for n in range(100, 1000))', number=10000)
         print('py fibo', t_py)
 
-        t_wasm = timeit.timeit('(fibo(n) for n in range(100, 1000))', number=10000)
+        t_wasm = timeit.timeit('(fibonacci(n) for n in range(100, 1000))', number=10000)
         print('t_wasm fibo', t_wasm)
 
-        t_py = timeit.timeit('(string_loop(str(n)*100) for n in range(100, 1000))', number=10000)
+        t_py = timeit.timeit('(py_string_loop(str(n)*100) for n in range(100, 1000))', number=10000)
         print('py str loop', t_py)
 
         t_wasm = timeit.timeit('(loop_str(str(n)*100) for n in range(100, 1000))', number=10000)
         print('t_wasm str loop', t_wasm)
 
-        t_py = timeit.timeit('(shapely_convex_hull() for n in range(100, 1000))', number=10000)
+        t_py = timeit.timeit('(py_shapely_convex_hull() for n in range(100, 1000))', number=10000)
         print('py shapely convex hull', t_py)
 
         t_wasm = timeit.timeit('(rust_geo_convex_hull() for n in range(100, 1000))', number=10000)

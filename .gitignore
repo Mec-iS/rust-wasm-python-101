@@ -3,4 +3,5 @@
 venv/
 *.pyc
 __pycache__/
-python-ext-wasmer/
+python-ext-wasm/
+data/*.csv
