@@ -3,7 +3,7 @@ pub extern fn simple_add(a: i32, b: i32) -> i32 { a + b}
 
 ///
 /// Fibonacci
-///
+/// https://github.com/eliovir/rust-examples/blob/master/fibonacci.rs
 #[no_mangle]
 pub extern fn fibo(n: i32) -> i32 {
     if n < 0 {
