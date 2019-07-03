@@ -36,12 +36,5 @@ If everything is working correctly, you should see output that looks something l
 ```
 Modules exported from Rust:
 ["loop_str", "fibo", "simple_add"]
-call simple_add(12, 12):
-24
-py add 0.006070989000000006
-t_wasm add 0.005827948999999999
-py fibo 0.005115728999999999
-t_wasm fibo 0.004803907000000003
-py str loop 0.00475766100000001
-t_wasm str loop 0.004782752000000001
+...
 ```
