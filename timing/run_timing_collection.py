@@ -9,7 +9,7 @@ from wasmer import Instance
 
 from src_py import *
 
-path = 'target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm'
+path = '../target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm'
 
 
 def run_timing():
@@ -30,7 +30,7 @@ def run_timing():
         from collections import OrderedDict
         results = OrderedDict()
         results['timestap'] = str(datetime.now())
-        results['python_wasmer_v'] = wasmer.__version__
+        results['python_wasmer_v'] = f'{wasmer.__version__}|{wasmer.__core_version__}' 
         results['rustc_v'] = open(join(dirname(__file__), 'CONFIG'), 'r').read().replace('\n', '')
         results['data'] = {}
 
