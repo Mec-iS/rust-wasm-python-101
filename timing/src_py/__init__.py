@@ -23,7 +23,7 @@ def py_string_loop(string):
         s = s * 10
 
 def py_shapely_convex_hull():
-    shp = [
+    shp = tuple([
        (0.0, 0.0),
        (4.0, 0.0),
        (4.0, 1.0),
@@ -31,6 +31,6 @@ def py_shapely_convex_hull():
        (1.0, 4.0),
        (0.0, 4.0),
        (0.0, 0.0),
-    ]
+    ])
 
     MultiPoint(shp).convex_hull

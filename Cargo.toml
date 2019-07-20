@@ -8,5 +8,5 @@ edition = "2018"
 crate-type = ["cdylib"]
 
 [dependencies]
-rustc_version_runtime = "0.1.5"
-geo = "0.12.1"
+rustc_version_runtime = "*"
+geo = "*"
