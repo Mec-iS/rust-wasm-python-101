@@ -22,15 +22,16 @@ def py_string_loop(string):
     for s in string:
         s = s * 10
 
-def py_shapely_convex_hull():
-    shp = tuple([
-       (0.0, 0.0),
-       (4.0, 0.0),
-       (4.0, 1.0),
-       (1.0, 1.0),
-       (1.0, 4.0),
-       (0.0, 4.0),
-       (0.0, 0.0),
-    ])
+def py_shapely_convex_hull(shp=None):
+    if shp is None:
+        shp = tuple([
+           (0.0, 0.0),
+           (4.0, 0.0),
+           (4.0, 1.0),
+           (1.0, 1.0),
+           (1.0, 4.0),
+           (0.0, 4.0),
+           (0.0, 0.0),
+        ])
 
     MultiPoint(shp).convex_hull

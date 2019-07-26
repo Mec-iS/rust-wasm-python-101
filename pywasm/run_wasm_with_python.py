@@ -2,9 +2,9 @@ import timeit
 
 from wasmer import Instance
 
-from timing.src_py import *
+from src_py import *
 
-path = 'target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm'
+path = '../target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm'
 
 context = '''from wasmer import Instance
 path = 'target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm'

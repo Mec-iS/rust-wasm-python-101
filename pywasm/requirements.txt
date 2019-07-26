@@ -2,3 +2,4 @@ wasmer
 shapely[vectorized]
 ppci
 pytest
+flask

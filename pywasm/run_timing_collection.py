@@ -68,7 +68,7 @@ def run_timing():
         results['data']['convex_hull'] = { 'py': t_py, 'wasm': t_wasm }
 
         # CSV file
-        csv_file = join(dirname(__file__), 'data', 'timing.csv')
+        csv_file = join(dirname(__file__), 'timing', 'data', 'timing.csv')
         file_exists = os.path.isfile(csv_file)
         with open(csv_file, 'a') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=results.keys())
