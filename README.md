@@ -12,7 +12,7 @@ Update to the latest version of Rust
 rustup update
 ```
 
-Add the WASM target:
+Add the Wasm target:
 ```
 rustup target add wasm32-unknown-unknown
 ```

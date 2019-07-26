@@ -1,13 +1,21 @@
-import requests
 import random
 import json
 from time import sleep
 
-def test_fibo_wasm():
+import pytest
+from structlog import get_logger
+
+logger = get_logger()
+
+@pytest.fixture
+def client():
     from .app import app
     app.config['TESTING'] = True
     client = app.test_client()
 
+    yield client
+
+def test_fibo_wasm(client):
     time = None
     for n in range(10000):
         i = random.choice(list(x for x in range (1,25)))
@@ -18,13 +26,9 @@ def test_fibo_wasm():
         else:
             time = time + data['time'] / 2
 
-    print('time fibo_wasm', time)
+    logger.info('Time it', func='fibo_wasm', time=time)
 
-def test_fibo_py():
-    from .app import app
-    app.config['TESTING'] = True
-    client = app.test_client()
-
+def test_fibo_py(client):
     time = None
     for n in range(10000):
         i = random.choice(list(x for x in range (1,25)))
@@ -35,13 +39,9 @@ def test_fibo_py():
         else:
             time = time + data['time'] / 2
 
-    print('time fibo_py', time)
+    logger.info('Time it', func='fibo_py', time=time)
 
-def test_convexhull_wasm():
-    from .app import app
-    app.config['TESTING'] = True
-    client = app.test_client()
-
+def test_convexhull_wasm(client):
     time = None
     for n in range(10000):
         i = random.choice(list(x for x in range (1,25)))
@@ -52,13 +52,9 @@ def test_convexhull_wasm():
         else:
             time = time + data['time'] / 2
 
-    print('time convexhull_wasm', time)
+    logger.info('Time it', func='convexhull_wasm', time=time)
 
-def test_convexhull_py():
-    from .app import app
-    app.config['TESTING'] = True
-    client = app.test_client()
-
+def test_convexhull_py(client):
     time = None
     for n in range(10000):
         i = random.choice(list(x for x in range (1,25)))
@@ -69,4 +65,4 @@ def test_convexhull_py():
         else:
             time = time + data['time'] / 2
 
-    print('time convexhull_py', time)
+    logger.info('Time it', func='convexhull_py', time=time)
