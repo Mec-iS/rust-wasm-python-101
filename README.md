@@ -3,6 +3,7 @@
 A basic example of calling Rust from Python used as example in the blogposts:
 * [Rust-scales Python: Basic experiment](https://medium.com/@lorenzogotuned/rust-scales-python-function-d3b1d24351cd)
 * [Rust-scales Python: Example 1](https://medium.com/@lorenzogotuned/rust-scales-python-some-examples-1-a1449236c308)
+* [Rust-scales Python: Flask experiment] (https://dev.to/tuned/rust-scales-python-flask-experiment-4l4l)
 
 ## Setup
 Ensure that you have both Rust and Python3 installed.
