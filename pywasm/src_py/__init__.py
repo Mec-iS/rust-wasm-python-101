@@ -18,10 +18,6 @@ def py_fibonacci(n):
 
     return nextterm
 
-def py_string_loop(string):
-    for s in string:
-        s = s * 10
-
 def py_shapely_convex_hull(shp=None):
     if shp is None:
         shp = tuple([
