@@ -7,15 +7,17 @@ import csv
 import wasmer
 from wasmer import Instance
 
-from src_py import *
+from examples import *
 
-path = '../target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm'
+path = join(dirname(dirname(abspath(__file__))), 'target', 'wasm32-unknown-unknown', 'release', 'rust_wasm_python_101.wasm')
+
+print('>>>', path)
 
 from os.path import join, dirname
 
-context = '''
+context = f'''
 from wasmer import Instance
-path = '../target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm'
+path = "{path}"
 wasm_bytes = open(path, 'rb').read()
 instance = Instance(wasm_bytes)
 simple_add = instance.exports.simple_add
@@ -46,21 +48,21 @@ def run_timing():
 
         results['data'] = {}
 
-        t_py = timeit.timeit('[py_simple_add(n-1, n) for n in range(100, 1000)]', number=10000, setup='from src_py import py_simple_add')
+        t_py = timeit.timeit('[py_simple_add(n-1, n) for n in range(100, 1000)]', number=10000, setup='from examples import py_simple_add')
         print('py add', t_py)
 
         t_wasm = timeit.timeit('[simple_add(n-1, n) for n in range(100, 1000)]', number=10000, setup=context+'simple_add = instance.exports.simple_add')
         print('t_wasm add', t_wasm)
         results['data']['simple_add'] = { 'py': t_py, 'wasm': t_wasm }
 
-        t_py = timeit.timeit('[py_fibonacci(n) for n in range(100, 1000)]', number=1000, setup='from src_py import py_fibonacci')
+        t_py = timeit.timeit('[py_fibonacci(n) for n in range(100, 1000)]', number=1000, setup='from examples import py_fibonacci')
         print('py fibo', t_py)
 
         t_wasm = timeit.timeit('[fibo(n) for n in range(100, 1000)]', number=1000, setup=context+'fibo = instance.exports.fibo')
         print('t_wasm fibo', t_wasm)
         results['data']['fibonacci'] = { 'py': t_py, 'wasm': t_wasm }
 
-        t_py = timeit.timeit('[py_shapely_convex_hull() for n in range(100, 1000)]', number=1000, setup='from src_py import py_shapely_convex_hull')
+        t_py = timeit.timeit('[py_shapely_convex_hull() for n in range(100, 1000)]', number=1000, setup='from examples import py_shapely_convex_hull')
         print('py shapely convex hull', t_py)
 
         t_wasm = timeit.timeit('[rust_geo_convex_hull() for n in range(100, 1000)]', number=1000, setup=context+'rust_geo_convex_hull = instance.exports.rust_geo_convex_hull')
