@@ -5,7 +5,7 @@ from wasmer import Instance
 
 from examples import *
 
-path = join(dirname(dirname(__file__)), 'target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm')
+path = join(dirname(dirname(abspath(__file__))), 'target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm')
 
 def run_test():
     with open(path, 'rb') as bytecode:
