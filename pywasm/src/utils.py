@@ -1,15 +1,16 @@
 """
-Memeory Allocation Utilities
+Memory Allocation Utilities
 """
 def allocate_bytes(instance, size=8):
     """Create a view for an instance"""
     mem = instance.memory
-    return mem.uint8_view()
+    funcname = f'uint{size}_view'
+    return getattr(mem, funcname)()
 
 def write_to_memory(bytestr, mem_view, offset=0):
     """Fill memory with values"""
     for i, c in enumerate(bytestr):
-        mem_view[i] = c
+        mem_view[offset + i] = c
     return mem_view
 
 def address_to_utf8(mem_view, address, length):

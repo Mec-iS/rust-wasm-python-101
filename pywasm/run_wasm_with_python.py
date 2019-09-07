@@ -3,7 +3,8 @@ import timeit
 
 from wasmer import Instance
 
-from examples import *
+from examples.scientific import *
+from examples.strings_proc import *
 
 path = join(dirname(dirname(abspath(__file__))), 'target/wasm32-unknown-unknown/release/rust_wasm_python_101.wasm')
 

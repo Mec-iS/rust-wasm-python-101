@@ -30,7 +30,7 @@ def fibo_wasm(n):
 def fibo_py(n):
     n = int(n)
 
-    from examples import py_fibonacci
+    from examples.scientific import py_fibonacci
 
     if n < 25:
         try:
@@ -72,7 +72,7 @@ def convexhull_wasm(n=0):
 def convexhull_py(n=0):
     n = int(n)
 
-    from examples import py_shapely_convex_hull
+    from examples.scientific import py_shapely_convex_hull
 
     if n < 25:
         try:
